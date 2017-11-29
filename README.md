@@ -1,4 +1,8 @@
-# functions
-常用函数整理
-JS函数库：JsFunc.js
+#小汤的资源库
+
+**JS函数库、类库，PHP函数库** 文件所在目录：*functions*
+
+**PHP扩展、类库**文件所在目录：*extend*
+
+**第三方工具插件**文件所在目录:*tool*
 
