@@ -211,6 +211,7 @@ function reload( url = '', time = 0 ){
         location.href = url;
     },time);
 }
+
 /**
  * @function 阻止默认事件，如a标签
  * @param e
@@ -332,6 +333,41 @@ function LoadStyle(url) {
         cssLink.href = url;
         var head = document.getElementsByTagName('head')[0];
         head.appendChild(cssLink)
+    }
+}
+/**
+ * @function 倒计时
+ * @param year
+ * @param month
+ * @param day
+ * @param hour
+ * @param minute
+ * @param second
+ * @returns {*}
+ */
+function toppleTime(year,month,day,hour,minute,second){
+    var leftTime = (new Date(year,month-1,day,hour,minute,second)) - (new Date()); //计算剩余的毫秒数
+    var days = parseInt(leftTime / 1000 / 60 / 60 / 24 , 10); //计算剩余的天数
+    var hours = parseInt(leftTime / 1000 / 60 / 60 % 24 , 10); //计算剩余的小时
+    var minutes = parseInt(leftTime / 1000 / 60 % 60, 10);//计算剩余的分钟
+    var seconds = parseInt(leftTime / 1000 % 60, 10);//计算剩余的秒数
+    if( days < 1 && hours < 1 && minutes < 1 && seconds < 1 ){
+        return false;
+    }else{
+        days = checkTime(days);
+        hours = checkTime(hours);
+        minutes = checkTime(minutes);
+        seconds = checkTime(seconds);
+        if( days < 1 ){
+            return days+"天" + hours+"小时" + minutes+"分"+seconds+"秒";
+        }else{
+            return hours+"小时" + minutes+"分"+seconds+"秒"
+        }
+    }
+
+    var checkTime = function( i ){
+        if(i<10) {i = "0" + i;}
+        return i;
     }
 }
 /**
